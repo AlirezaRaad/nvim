@@ -7,16 +7,6 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        python = { 'flake8' },
-      }
-
-      lint.linters.flake8 = {
-        cmd = 'flake8',
-        stdin = false,
-        args = { '--format=%(row)d:%(col)d:%(code)s: %(text)s', '%file' },
-        stream = 'stdout',
-        ignore_exitcode = true,
-        parser = require('lint.parser').from_errorformat '%f:%l:%c: %trror: %m,%f:%l:%c: %tarning: %m',
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
