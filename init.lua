@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -716,9 +716,18 @@ require('lazy').setup({
                   },
                 },
               },
-            }
-            
-      ,}
+            },
+	phpactor = {
+    on_attach = function(client, bufnr)
+      -- Custom PHPactor settings here
+    end,
+    init_options = {
+      ["language_server_phpstan.enabled"] = false,
+      ["language_server_psalm.enabled"] = false,
+    },
+  },
+    }
+
       -- Ensure the servers and tools above are installed
       --
       -- To check the current status of installed tools and/or manually install
@@ -735,6 +744,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+	'phpactor',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -995,9 +1005,9 @@ require('lazy').setup({
   require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -1048,3 +1058,5 @@ vim.o.cursorline = true
 vim.cmd [[
   highlight CursorLine guibg=#00FFF
 ]]
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true

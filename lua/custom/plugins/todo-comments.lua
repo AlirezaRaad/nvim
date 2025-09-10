@@ -16,6 +16,7 @@ return {
       PU = { icon = '󱁯', color = 'purple', alt = {} },
       GR = { icon = '󰀭', color = 'green', alt = {} },
       PNK = { icon = '󱁯', color = 'test', alt = {} },
+      RED = { icon = '󱁯', color = 'red', alt = {} },
     },
     colors = {
       todo = '#FF8C00',
@@ -29,6 +30,7 @@ return {
       white = '#FFFFFF',
       yellow = '#FFFF00',
       purple = '#BF00FF',
+      red="#FF0000",
     },
   },
 }
