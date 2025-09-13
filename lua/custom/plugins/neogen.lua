@@ -8,7 +8,7 @@ return {
       ls.filetype_extend('htmldjango', { 'html' })
       ls.filetype_extend('htmx', { 'html' })
       ls.filetype_extend('django', { 'html' })
-    end,
+	end,
   },
 
   {

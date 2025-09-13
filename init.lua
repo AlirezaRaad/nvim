@@ -1051,3 +1051,12 @@ vim.cmd [[
 ]]
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
+
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*/templates/*.html", "*/templates/**/*.html"},
+  callback = function()
+    vim.bo.filetype = "htmldjango"
+  end,
+})
+
