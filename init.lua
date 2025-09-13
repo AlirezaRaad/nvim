@@ -1060,3 +1060,38 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   end,
 })
 
+local cmp = require 'cmp'
+local luasnip = require 'luasnip'
+
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  sources = cmp.config.sources {
+    { name = 'nvim_lsp', priority = 10 },
+    { name = 'buffer', priority = 5 },
+    { name = 'path', priority = 3 },
+    { name = 'luasnip', priority = 7 }, -- Set priority less than LSP but higher than path
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+  },
+  experimental = {
+    ghost_text = false,
+  },
+}
+
