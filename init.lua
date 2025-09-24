@@ -1073,8 +1073,14 @@ cmp.setup {
     { name = 'nvim_lsp', priority = 10 },
     { name = 'buffer', priority = 5 },
     { name = 'path', priority = 3 },
-    { name = 'luasnip', priority = 7 }, -- Set priority less than LSP but higher than path
+    { name = 'luasnip', priority = 7 },
   },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
   sorting = {
     priority_weight = 2,
     comparators = {
@@ -1095,3 +1101,7 @@ cmp.setup {
   },
 }
 
+vim.opt.expandtab = true  -- Convert tabs to spaces
+vim.opt.tabstop = 4       -- Number of spaces per tab
+vim.opt.shiftwidth = 4    -- Indentation width
+vim.opt.softtabstop = 4
