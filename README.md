@@ -16,3 +16,12 @@ When you create a new uv project and want to add a kernel and then use that kern
 uv add --dev ipykernel
 uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name=project_name
 ```
+
+Used :
+
+```bash
+pip install jupyterthemes
+jt -t onedork
+```
+
+On global pip to change the color scheme of jupyter
