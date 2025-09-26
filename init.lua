@@ -1105,3 +1105,15 @@ vim.opt.expandtab = true  -- Convert tabs to spaces
 vim.opt.tabstop = 4       -- Number of spaces per tab
 vim.opt.shiftwidth = 4    -- Indentation width
 vim.opt.softtabstop = 4
+
+-- Setting for Jupynium
+vim.keymap.set('n', '<leader>ju', ':JupyniumStartAndAttachToServer<CR>',{ desc = 'Start j[U]pynium and attach to the server' })
+vim.keymap.set('n', '<leader>jc', ':JupyniumStartSync<CR>',{ desc = '[S]ync the current Jupynium buffer to the server' })
+vim.keymap.set('n', '<leader>jk', ':JupyniumKernelSelect<CR>',{ desc = 'Select notebook [K]erel' })
+vim.keymap.set('n', '<leader>jd', ':JupyniumDownloadIpynb<CR>',{ desc = '[D]ownloads the buffer in .ipynb format' })
+
+
+local wk = require("which-key")
+wk.add({
+  { "<leader>j", group = "Jupynium" },
+})
