@@ -1111,7 +1111,7 @@ vim.keymap.set('n', '<leader>ju', ':JupyniumStartAndAttachToServer<CR>',{ desc =
 vim.keymap.set('n', '<leader>jc', ':JupyniumStartSync<CR>',{ desc = '[S]ync the current Jupynium buffer to the server' })
 vim.keymap.set('n', '<leader>jk', ':JupyniumKernelSelect<CR>',{ desc = 'Select notebook [K]erel' })
 vim.keymap.set('n', '<leader>jd', ':JupyniumDownloadIpynb<CR>',{ desc = '[D]ownloads the buffer in .ipynb format' })
-
+vim.keymap.set('n', '<leader>jl', ':JupyniumLoadFromIpynbTab<CR>',{ desc = '[L]oad  existing opened .ipynb notebook in web browser into current buffer' })
 
 local wk = require("which-key")
 wk.add({
