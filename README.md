@@ -14,7 +14,7 @@ When you create a new uv project and want to add a kernel and then use that kern
 
 ```bash
 uv add --dev ipykernel
-uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name=project_name
+uv run --active ipython kernel install --user --name=handson_ml2
 ```
 
 Used :
