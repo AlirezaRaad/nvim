@@ -1060,47 +1060,6 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   end,
 })
 
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  sources = cmp.config.sources {
-    { name = 'nvim_lsp', priority = 10 },
-    { name = 'buffer', priority = 5 },
-    { name = 'path', priority = 3 },
-    { name = 'luasnip', priority = 7 },
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-  }),
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
-    },
-  },
-  completion = {
-    completeopt = 'menu,menuone,noinsert',
-  },
-  experimental = {
-    ghost_text = false,
-  },
-}
-
 vim.opt.expandtab = true  -- Convert tabs to spaces
 vim.opt.tabstop = 4       -- Number of spaces per tab
 vim.opt.shiftwidth = 4    -- Indentation width
@@ -1117,3 +1076,11 @@ local wk = require("which-key")
 wk.add({
   { "<leader>j", group = "Jupynium" },
 })
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("normal! zz")
+  end,
+})
+
