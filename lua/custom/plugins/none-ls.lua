@@ -16,6 +16,7 @@ return {
         'prettier',
         'shfmt',
         'ruff', -- Python linter and formatter; Already installed via Mason, Replacer of isort, black, flake8
+        'gofmt',
       },
       -- auto-install configured formatters & linters (with null-ls)
       automatic_installation = true,
