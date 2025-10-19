@@ -23,9 +23,10 @@ return {
     }
 
     local sources = {
+                  formatting.gofmt,
       formatting.prettier.with { filetypes = { 'html', 'json', 'yaml', 'markdown' } },
       formatting.shfmt.with { args = { '-i', '4' } },
-      require('none-ls.formatting.ruff').with { extra_args = {"--fix-exclude=F401"} },
+      require('none-ls.formatting.ruff').with { extra_args = {"--fix-exclude=F401,F403"} },
       require 'none-ls.formatting.ruff_format',
     }
 
